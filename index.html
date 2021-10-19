@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Tidyverse</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Italo Cegatta" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Tidyverse
+### Italo Cegatta
+### 20/10/2021
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Temas de hoje
+
+- O que é Tidyverse
+
+- Livro de Referência
+
+- Curso de referência
+
+- Os pacotes
+
+- Exemplos
+
+- Cartas de comandos
+
+- Referências
+
+---
+
+# O que é Tidyverse
+
+Até 2016 o termo **hadleyverse** era utilizado como referência aos pacotes criados pelo Hadley Wickham. Mas na UseR 2016 ele cunhou o termo **Tidyverse**, utilizado desde então.
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/hadley_site.jpg" alt="&amp;lt;a href=&amp;quot;http://hadley.nz/&amp;quot;&amp;gt;http://hadley.nz&amp;lt;/a&amp;gt;" width="100%" /&gt;
+&lt;p class="caption"&gt;&lt;a href="http://hadley.nz/"&gt;http://hadley.nz&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+]
+
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/tidyverse_talk.jpg" alt="&amp;lt;a href=&amp;quot;https://channel9.msdn.com/Events/useR-international-R-User-conference/useR2016/Towards-a-grammar-of-interactive-graphics&amp;quot;&amp;gt;Tidy tools for data science (aka Tidyverse)&amp;lt;/a&amp;gt;" width="100%" /&gt;
+&lt;p class="caption"&gt;&lt;a href="https://channel9.msdn.com/Events/useR-international-R-User-conference/useR2016/Towards-a-grammar-of-interactive-graphics"&gt;Tidy tools for data science (aka Tidyverse)&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+
+# O que é Tidyverse
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/tidyverse_site.jpg" alt="&amp;lt;a href=&amp;quot;https://www.tidyverse.org&amp;quot;&amp;gt;https://www.tidyverse.org&amp;lt;/a&amp;gt;" width="80%" /&gt;
+&lt;p class="caption"&gt;&lt;a href="https://www.tidyverse.org"&gt;https://www.tidyverse.org&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+
+# Livro de Referência
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/r4ds_site.jpg" alt="&amp;lt;a href=&amp;quot;https://r4ds.had.co.nz/&amp;quot;&amp;gt;https://r4ds.had.co.nz&amp;lt;/a&amp;gt;" width="80%" /&gt;
+&lt;p class="caption"&gt;&lt;a href="https://r4ds.had.co.nz/"&gt;https://r4ds.had.co.nz&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+
+# Os pacotes
+
+.pull-left[
+
+
+```r
+install.packages("tidyverse")
+```
+
+
+```r
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("readr")
+install.packages("purrr")
+install.packages("tibble")
+install.packages("stringr")
+install.packages("forcats")
+install.packages("lubridate")
+install.packages("hms")
+install.packages("DBI")
+install.packages("haven")
+install.packages("httr")
+install.packages("jsonlite")
+install.packages("readxl")
+install.packages("rvest")
+install.packages("xml2")
+install.packages("modelr")
+install.packages("broom")
+```
+]
+
+.pull-right[
+
+
+```r
+library("tidyverse")
+```
+
+
+```r
+library("ggplot2")
+library("dplyr")
+library("tidyr")
+library("readr")
+library("purrr")
+library("tibble")
+library("stringr")
+library("forcats")
+```
+]
+
+
+---
+
+# Os pacotes
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/data-science_cicle_packages.png" alt="&amp;lt;a href=&amp;quot;https://osf.io/69gub/wiki/home/&amp;quot;&amp;gt;https://osf.io/69gub/wiki/home/&amp;lt;/a&amp;gt;" width="90%" /&gt;
+&lt;p class="caption"&gt;&lt;a href="https://osf.io/69gub/wiki/home/"&gt;https://osf.io/69gub/wiki/home/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+
+class: inverse, center
+
+# Exemplos!
+
+&lt;img src="img/cat-computer.gif" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+```r
+library(tidyverse)
+```
+
+```
+## Warning: package 'tidyverse' was built under R version 4.1.1
+```
+
+```
+## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+```
+
+```
+## v ggplot2 3.3.5     v purrr   0.3.4
+## v tibble  3.1.5     v dplyr   1.0.7
+## v tidyr   1.1.4     v stringr 1.4.0
+## v readr   2.0.2     v forcats 0.5.1
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 4.1.1
+```
+
+```
+## Warning: package 'tibble' was built under R version 4.1.1
+```
+
+```
+## Warning: package 'tidyr' was built under R version 4.1.1
+```
+
+```
+## Warning: package 'readr' was built under R version 4.1.1
+```
+
+```
+## Warning: package 'dplyr' was built under R version 4.1.1
+```
+
+```
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+
+```r
+library(broom)
+```
+
+```
+## Warning: package 'broom' was built under R version 4.1.1
+```
+
+
+---
+
+# Importando dados com **readr** e **tibble**
+
+
+```r
+dados_raw &lt;- read_csv2(
+  "https://github.com/italocegatta/italocegatta.github.io_source/raw/master/content/dados/tume_55_24.csv"
+) %&gt;% 
+  filter()
+
+dados_raw
+```
+
+```
+## # A tibble: 1,881 x 9
+##    N_tume I_meses Esp          Parc_m2 N_arv DAP_cm   H_m   Cod  Cod2
+##     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1     55      24 E_botryoides     600     1    4.1   6.5    NA    NA
+##  2     55      24 E_botryoides     600     2    9.7   8      NA    NA
+##  3     55      24 E_botryoides     600     3   NA    NA       5    NA
+##  4     55      24 E_botryoides     600     4    7.6   7.5     2    NA
+##  5     55      24 E_botryoides     600     5    3.8   5      NA    NA
+##  6     55      24 E_botryoides     600     6   NA    NA       1    NA
+##  7     55      24 E_botryoides     600     7   12.6   9       6    NA
+##  8     55      24 E_botryoides     600     8   NA    NA       1    NA
+##  9     55      24 E_botryoides     600     9    7     8      NA    NA
+## 10     55      24 E_botryoides     600    10    7.5   7.5    NA    NA
+## # ... with 1,871 more rows
+```
+
+---
+
+# Manipulando dados com **dplyr** e **pipe**
+
+
+```r
+dados &lt;- dados_raw %&gt;% 
+  select(Esp, DAP_cm, H_m) %&gt;% 
+  filter(Esp %in% c("E_saligna", "E_urophylla"))
+
+dados
+```
+
+```
+## # A tibble: 160 x 3
+##    Esp       DAP_cm   H_m
+##    &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+##  1 E_saligna    8.6   9.5
+##  2 E_saligna   11.8  11  
+##  3 E_saligna   NA    NA  
+##  4 E_saligna    9.9  10.5
+##  5 E_saligna    9.9  10.5
+##  6 E_saligna    6.4   8.5
+##  7 E_saligna    9.9  11  
+##  8 E_saligna   10.5  10.5
+##  9 E_saligna    8.1   9.5
+## 10 E_saligna   10    10  
+## # ... with 150 more rows
+```
+
+
+---
+
+# Manipulando dados com **dplyr** e **pipe**
+
+
+```r
+dados %&gt;% 
+  select(
+    especie = Esp, 
+    dap = DAP_cm
+  ) %&gt;% 
+  group_by(especie) %&gt;% 
+  summarise(
+    n_vivas = sum(!is.na(dap)),
+    dap_medio = mean(dap, na.rm = TRUE)
+  )
+```
+
+```
+## # A tibble: 2 x 3
+##   especie     n_vivas dap_medio
+##   &lt;chr&gt;         &lt;int&gt;     &lt;dbl&gt;
+## 1 E_saligna        70      9.56
+## 2 E_urophylla      74      8.96
+```
+
+
+---
+
+# Fazendo gráficos com **ggplot2**
+
+
+```r
+ggplot(dados, aes(DAP_cm, H_m)) +
+  geom_point(alpha=0.4) +
+  geom_smooth(method="lm") +
+  facet_wrap(~Esp) +
+  theme_bw()
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-16-1.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Reformatando dados com **tidyr**
+
+
+```r
+dados %&gt;%
+  group_by(Esp) %&gt;% 
+  nest()
+```
+
+```
+## # A tibble: 2 x 2
+## # Groups:   Esp [2]
+##   Esp         data             
+##   &lt;chr&gt;       &lt;list&gt;           
+## 1 E_saligna   &lt;tibble [80 x 2]&gt;
+## 2 E_urophylla &lt;tibble [80 x 2]&gt;
+```
+
+
+---
+
+# Programação funcional com **purrr**
+
+
+```r
+dados_modl &lt;- dados %&gt;%
+  group_by(Esp) %&gt;% 
+  nest() %&gt;% 
+  mutate(
+    ajuste = map(data, ~ lm(log(H_m) ~ I(1/DAP_cm), data = .x)),
+    resumo = map(ajuste, glance)
+  )
+
+dados_modl
+```
+
+```
+## # A tibble: 2 x 4
+## # Groups:   Esp [2]
+##   Esp         data              ajuste resumo           
+##   &lt;chr&gt;       &lt;list&gt;            &lt;list&gt; &lt;list&gt;           
+## 1 E_saligna   &lt;tibble [80 x 2]&gt; &lt;lm&gt;   &lt;tibble [1 x 12]&gt;
+## 2 E_urophylla &lt;tibble [80 x 2]&gt; &lt;lm&gt;   &lt;tibble [1 x 12]&gt;
+```
+
+
+---
+
+# Desempacotando os dados
+
+
+```r
+dados_modl %&gt;%
+  select(Esp, resumo) %&gt;% 
+  unnest(resumo)
+```
+
+```
+## # A tibble: 2 x 13
+## # Groups:   Esp [2]
+##   Esp      r.squared adj.r.squared  sigma statistic  p.value    df logLik    AIC
+##   &lt;chr&gt;        &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 E_salig~     0.798         0.795 0.0607      269. 2.47e-25     1   97.9 -190. 
+## 2 E_uroph~     0.769         0.766 0.126       240. 1.22e-24     1   49.5  -93.1
+## # ... with 4 more variables: BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;,
+## #   nobs &lt;int&gt;
+```
+
+
+---
+
+# Aplicando os modelos
+
+
+```r
+dados_pred &lt;- dados_modl %&gt;% 
+  mutate(
+    hpred = map2(ajuste, data, ~ exp(predict(.x, newdata = .y)))
+  ) %&gt;%
+  select(Esp, data, hpred)
+
+dados_pred
+```
+
+```
+## # A tibble: 2 x 3
+## # Groups:   Esp [2]
+##   Esp         data              hpred     
+##   &lt;chr&gt;       &lt;list&gt;            &lt;list&gt;    
+## 1 E_saligna   &lt;tibble [80 x 2]&gt; &lt;dbl [80]&gt;
+## 2 E_urophylla &lt;tibble [80 x 2]&gt; &lt;dbl [80]&gt;
+```
+
+
+---
+
+# Dados preditos
+
+
+```r
+dados_compl &lt;- dados_pred %&gt;%
+  unnest(hpred, data)
+
+dados_compl
+```
+
+```
+## # A tibble: 160 x 4
+## # Groups:   Esp [2]
+##    Esp       DAP_cm   H_m hpred
+##    &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 E_saligna    8.6   9.5 10.5 
+##  2 E_saligna   11.8  11   11.7 
+##  3 E_saligna   NA    NA   NA   
+##  4 E_saligna    9.9  10.5 11.1 
+##  5 E_saligna    9.9  10.5 11.1 
+##  6 E_saligna    6.4   8.5  9.20
+##  7 E_saligna    9.9  11   11.1 
+##  8 E_saligna   10.5  10.5 11.3 
+##  9 E_saligna    8.1   9.5 10.3 
+## 10 E_saligna   10    10   11.1 
+## # ... with 150 more rows
+```
+
+
+---
+
+# Observado vs Predito
+
+
+```r
+dados_compl %&gt;% 
+  ggplot(aes(H_m, hpred)) +
+    geom_point() +
+    geom_abline() +
+    facet_wrap(~Esp) +
+    theme_bw()
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-22-1.png" width="40%" height="20%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Cartas de comandos
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/cheatsheets.jpg" alt="&amp;lt;a href=&amp;quot;https://www.rstudio.com/resources/cheatsheets/&amp;quot;&amp;gt;https://www.rstudio.com/resources/cheatsheets/&amp;lt;/a&amp;gt;" width="80%" /&gt;
+&lt;p class="caption"&gt;&lt;a href="https://www.rstudio.com/resources/cheatsheets/"&gt;https://www.rstudio.com/resources/cheatsheets/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+# Referências
+
+
+- https://github.com/rstudio-education/remaster-the-tidyverse
+
+- https://github.com/cwickham/data-science-in-tidyverse
+
+- https://github.com/oliviergimenez/intro_tidyverse
+
+- https://r4ds.had.co.nz/
+
+
+---
+
+class: inverse, center, middle
+
+## Obrigado!
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
