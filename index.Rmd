@@ -38,6 +38,7 @@ knitr::opts_chunk$set(
 # remotes::install_github("hadley/emo")
 # remotes::install_github("gadenbuie/xaringanExtra")
 # remotes::install_github("gadenbuie/ermoji")
+# install.packages("xaringanthemer")
 ```
 
 ```{r xaringanExtra-clipboard, echo=FALSE}
@@ -72,8 +73,6 @@ xaringanExtra::use_clipboard()
 - O que é Tidyverse
 
 - Livro de Referência
-
-- Curso de referência
 
 - Os pacotes
 
@@ -222,7 +221,7 @@ knitr::include_graphics("img/cat-computer.gif")
 
 ---
 
-```{r, eval=TRUE, message=TRUE, warning=TRUE}
+```{r, eval=TRUE, message=TRUE, warning=FALSE}
 library(tidyverse)
 library(broom)
 ```
@@ -235,8 +234,7 @@ library(broom)
 ```{r, eval=TRUE}
 dados_raw <- read_csv2(
   "https://github.com/italocegatta/italocegatta.github.io_source/raw/master/content/dados/tume_55_24.csv"
-) %>% 
-  filter()
+)
 
 dados_raw
 ```
@@ -347,7 +345,7 @@ dados_pred
 
 ```{r, eval=TRUE}
 dados_compl <- dados_pred %>%
-  unnest(hpred, data)
+  unnest(data, hpred)
 
 dados_compl
 ```
@@ -386,14 +384,17 @@ knitr::include_graphics("img/cheatsheets.jpg")
 
 # Referências
 
+- Gimenez, Olivier. 2020. Introduction to the Tidyverse. https://github.com/oliviergimenez/intro_tidyverse
 
-- https://github.com/rstudio-education/remaster-the-tidyverse
+- Grolemund, Garrett. 2019. Remaster the Tidyverse. https://github.com/rstudio-education/remaster-the-tidyverse
 
-- https://github.com/cwickham/data-science-in-tidyverse
+- Wickham, Charlotte. 2018. Data Science in the tidyverse https://github.com/cwickham/data-science-in-tidyverse
 
-- https://github.com/oliviergimenez/intro_tidyverse
+- Wickham, Hadley. 2014. Tidy data. The Journal of Statistical Software 59 (10). http://www.jstatsoft.org/v59/i10/
 
-- https://r4ds.had.co.nz/
+- Wickham, Hadley. 2016. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag. https://ggplot2-book.org/
+
+- Wickham, Hadley and Garrett Grolemund. 2016. R for Data Science. O’Reilly Media. http://r4ds.had.co.nz/
 
 
 ---

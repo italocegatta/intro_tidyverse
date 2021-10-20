@@ -38,8 +38,6 @@ class: center, middle, inverse, title-slide
 
 - Livro de Referência
 
-- Curso de referência
-
 - Os pacotes
 
 - Exemplos
@@ -171,10 +169,6 @@ library(tidyverse)
 ```
 
 ```
-## Warning: package 'tidyverse' was built under R version 4.1.1
-```
-
-```
 ## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
 ```
 
@@ -183,26 +177,6 @@ library(tidyverse)
 ## v tibble  3.1.5     v dplyr   1.0.7
 ## v tidyr   1.1.4     v stringr 1.4.0
 ## v readr   2.0.2     v forcats 0.5.1
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 4.1.1
-```
-
-```
-## Warning: package 'tibble' was built under R version 4.1.1
-```
-
-```
-## Warning: package 'tidyr' was built under R version 4.1.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```
-## Warning: package 'dplyr' was built under R version 4.1.1
 ```
 
 ```
@@ -215,10 +189,6 @@ library(tidyverse)
 library(broom)
 ```
 
-```
-## Warning: package 'broom' was built under R version 4.1.1
-```
-
 
 ---
 
@@ -228,8 +198,7 @@ library(broom)
 ```r
 dados_raw &lt;- read_csv2(
   "https://github.com/italocegatta/italocegatta.github.io_source/raw/master/content/dados/tume_55_24.csv"
-) %&gt;% 
-  filter()
+)
 
 dados_raw
 ```
@@ -428,7 +397,7 @@ dados_pred
 
 ```r
 dados_compl &lt;- dados_pred %&gt;%
-  unnest(hpred, data)
+  unnest(data, hpred)
 
 dados_compl
 ```
@@ -481,14 +450,17 @@ dados_compl %&gt;%
 
 # Referências
 
+- Gimenez, Olivier. 2020. Introduction to the Tidyverse. https://github.com/oliviergimenez/intro_tidyverse
 
-- https://github.com/rstudio-education/remaster-the-tidyverse
+- Grolemund, Garrett. 2019. Remaster the Tidyverse. https://github.com/rstudio-education/remaster-the-tidyverse
 
-- https://github.com/cwickham/data-science-in-tidyverse
+- Wickham, Charlotte. 2018. Data Science in the tidyverse https://github.com/cwickham/data-science-in-tidyverse
 
-- https://github.com/oliviergimenez/intro_tidyverse
+- Wickham, Hadley. 2014. Tidy data. The Journal of Statistical Software 59 (10). http://www.jstatsoft.org/v59/i10/
 
-- https://r4ds.had.co.nz/
+- Wickham, Hadley. 2016. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag. https://ggplot2-book.org/
+
+- Wickham, Hadley and Garrett Grolemund. 2016. R for Data Science. O’Reilly Media. http://r4ds.had.co.nz/
 
 
 ---
